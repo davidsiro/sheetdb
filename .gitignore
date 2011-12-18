@@ -1,2 +1,7 @@
 .metadata
 Servers
+target-eclipse
+target
+.settings
+.classpath
+.project
