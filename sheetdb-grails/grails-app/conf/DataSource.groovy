@@ -1,6 +1,6 @@
 dataSource {
     pooled = true
-    driverClassName = "org.hsqldb.jdbcDriver"
+    driverClassName = "com.mysql.jdbc.Driver"
     username = "sa"
     password = ""
 }
@@ -13,8 +13,10 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-            url = "jdbc:hsqldb:mem:devDB"
+            dbCreate = "update" // one of 'create', 'create-drop','update'
+            url = "jdbc:mysql://localhost:3306/sheetdb"
+			username = "root"
+			password = "root"
         }
     }
     test {

@@ -6,9 +6,9 @@
         <link rel="stylesheet" href="${resource(dir:'css',file:'ui-lightness/jquery-ui-1.8.16.custom.css')}" />
         <link rel="shortcut icon" href="${resource(dir:'images',file:'favicon.ico')}" type="image/x-icon" />
         <g:layoutHead />
-        <g:javascript library="application" />
-        <g:javascript src="jquery-1.6.2.min.js"/>
+        <g:javascript library="jquery" plugin="jquery" />
         <g:javascript src="jquery-ui-1.8.16.custom.min.js"/>
+        <g:javascript src="scripts.js"/>
     </head>
     <body>
         <div id="spinner" class="spinner" style="display:none;">

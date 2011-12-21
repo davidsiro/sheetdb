@@ -25,7 +25,7 @@
 		});
    	</script>
 	<div id="addDrawingDialog" title="Add drawing">
-		<g:render template="/drawing/createForm"
+		<g:render template="/drawing/createFormAjax"
 			model="[drawingInstance: new Drawing()]"></g:render>
 	</div>
 
@@ -104,7 +104,12 @@
 							</td>
 						</tr>
 						<tr>
-							<td><a href="#" id="openAddDrawingDialog">Add drawing</a>
+							<td><a href="#" id="openAddDrawingDialog">Add drawing</a></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td><div id="drawings"></div></td>
+							<td></td>
 						</tr>
 					</tbody>
 				</table>
