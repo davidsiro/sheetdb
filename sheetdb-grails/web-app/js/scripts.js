@@ -1,8 +1,5 @@
 function saveDrawingCallback(data)
 {
-	alert(data);
-	
-	$('#drawings').text(data.code);
+	$('#drawings').append(data);
 	$('#addDrawingDialog').dialog('close');
-	
 }

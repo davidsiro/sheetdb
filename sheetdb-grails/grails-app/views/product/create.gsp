@@ -51,7 +51,7 @@
 				<g:renderErrors bean="${productInstance}" as="list" />
 			</div>
 		</g:hasErrors>
-		<g:form action="save">
+		<g:form action="createProduct">
 			<div class="dialog">
 				<table>
 					<tbody>
@@ -62,16 +62,6 @@
 							<td valign="top"
 								class="value ${hasErrors(bean: productInstance, field: 'code', 'errors')}">
 								<g:textField name="code" value="${productInstance?.code}" />
-							</td>
-						</tr>
-
-						<tr class="prop">
-							<td valign="top" class="name"><label for="created"><g:message
-										code="product.created.label" default="Created" /></label></td>
-							<td valign="top"
-								class="value ${hasErrors(bean: productInstance, field: 'created', 'errors')}">
-								<g:datePicker name="created" precision="day"
-									value="${productInstance?.created}" />
 							</td>
 						</tr>
 

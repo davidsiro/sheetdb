@@ -1,6 +1,8 @@
 package com.siro.sheetdb.grails.controller
 
-import com.siro.sheetdb.grails.domain.Drawing;
+import java.awt.print.Printable;
+
+import com.siro.sheetdb.grails.domain.Drawing
 import grails.converters.JSON
 
 class DrawingController {
@@ -105,7 +107,13 @@ class DrawingController {
 
 	def saveAsync = {
 		def drawingInstance = new Drawing(params)
-		if (drawingInstance.save(flush: true))
-			render drawingInstance as JSON
+		try {
+			//save causes problem, probably mandatory association to product
+			//			if (drawingInstance.save(flush: true))
+				render(template: "/drawing/preview", model: [drawing: drawingInstance])
+		}
+		catch(Exception e) {
+			print(e)
+		}
 	}
 }

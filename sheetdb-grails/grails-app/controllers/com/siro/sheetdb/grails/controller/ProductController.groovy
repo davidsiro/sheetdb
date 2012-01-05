@@ -1,10 +1,13 @@
 package com.siro.sheetdb.grails.controller
 
 import com.siro.sheetdb.grails.domain.Product;
+import com.siro.sheetdb.grails.service.ProductService
 
 class ProductController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
+	ProductService productService
 
     def index = {
         redirect(action: "list", params: params)
@@ -21,6 +24,7 @@ class ProductController {
         return [productInstance: productInstance]
     }
 
+	//TODO: to be deleted, should use separate service methods for new, edit operations
     def save = {
         def productInstance = new Product(params)
         if (productInstance.save(flush: true)) {
@@ -31,6 +35,17 @@ class ProductController {
             render(view: "create", model: [productInstance: productInstance])
         }
     }
+	
+	def createProduct = {
+		def productInstance = new Product(params)
+		if (productService.createProduct(productInstance)) {
+			flash.message = "${message(code: 'default.created.message', args: [message(code: 'product.label', default: 'Product'), productInstance.id])}"
+			redirect(action: "show", id: productInstance.id)
+		}
+		else {
+			render(view: "create", model: [productInstance: productInstance])
+		}
+	}
 
     def show = {
         def productInstance = Product.get(params.id)
