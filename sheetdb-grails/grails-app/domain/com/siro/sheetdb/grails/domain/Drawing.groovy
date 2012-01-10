@@ -9,5 +9,6 @@ class Drawing {
 	Product assignedProduct = null
 
     static constraints = {
+		assignedProduct(nullable:true)
     }
 }
