@@ -107,13 +107,7 @@ class DrawingController {
 
 	def saveAsync = {
 		def drawingInstance = new Drawing(params)
-		try {
-//			save causes problem, probably mandatory association to product
-						if (drawingInstance.save(flush: true))
-				render(template: "/drawing/preview", model: [drawing: drawingInstance])
-		}
-		catch(Exception e) {
-			print(e)
-		}
+		if (drawingInstance.save(flush: true))
+			render(template: "/drawing/preview", model: [drawing: drawingInstance])
 	}
 }

@@ -1,5 +1,7 @@
 package com.siro.sheetdb.grails.controller
 
+import org.codehaus.groovy.grails.web.metaclass.WithFormMethod;
+
 import com.siro.sheetdb.grails.domain.Product;
 import com.siro.sheetdb.grails.service.ProductService
 

@@ -104,7 +104,9 @@
 					</tbody>
 				</table>
 			</div>
-
+			
+			<g:hiddenField name="drawingsToBeAssigned"/>
+	
 
 			<div class="buttons">
 				<span class="button"><g:submitButton name="create"
