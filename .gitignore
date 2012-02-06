@@ -5,3 +5,5 @@ target
 .settings
 .classpath
 .project
+web-app/plugins/
+web-app/WEB-INF/classes/
