@@ -5,6 +5,8 @@ import grails.converters.JSON
 
 class DrawingRestController {
 
+	static allowedMethods = [save: "POST", show: "GET"]
+
 	def show() {
 		def drawingInstance = Drawing.get(params.id)
 		if (!drawingInstance) {
@@ -19,7 +21,6 @@ class DrawingRestController {
 		def drawingInstance = new Drawing(params)
 		if (drawingInstance.save(flush: true))
 			render drawingInstance as JSON
-
-		//			render(template: "/drawing/preview", model: [drawing: drawingInstance])
+		//		render(template: "/drawing/preview", model: [drawing: drawingInstance])
 	}
 }

@@ -1,4 +1,4 @@
-<g:form action="create" controller="drawing">
+<g:form>
 	<div class="dialog">
 		<table>
 			<tbody>
@@ -44,8 +44,8 @@
 		</table>
 	</div>
 	<div class="buttons">
-		<span class="button"> <g:submitToRemote action="saveAsync" onSuccess="saveDrawingCallback(data)"
-				controller="drawing" update="[success: 'message', failure: 'error']"
+		<span class="button"> <g:submitToRemote method="POST" onSuccess="saveDrawingCallback(data)"
+				 url="[controller:'drawing', base:'/api/']"  update="[success: 'message', failure: 'error']"
 				value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
 	</div>
 </g:form>
