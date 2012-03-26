@@ -17,9 +17,8 @@
 				$("#addDrawingDialog").dialog({ autoOpen: false });
 	
 		    	$("#openAddDrawingDialog").click(function(){
-		    		$("#addDrawingDialog").dialog('open');
-		    		
-		    		return false;
+		    			$("#addDrawingDialog").dialog('open');
+		    			return false;
 			    	});
 	
 		});
@@ -105,8 +104,9 @@
 				</table>
 			</div>
 			
-			<g:hiddenField name="drawingsToBeAssigned"/>
-	
+			<g:hiddenField name="drawingsCount" value="0"/>
+			<div id="drawingsToBeAssigned">
+			</div>
 
 			<div class="buttons">
 				<span class="button"><g:submitButton name="create"
