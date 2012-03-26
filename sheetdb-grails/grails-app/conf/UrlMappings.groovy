@@ -9,7 +9,8 @@ class UrlMappings {
 		
 		//rest api - will need to find a better way to dynamicaly resolved controller
 		//classes from diferrent packages
-		"/api/$controller/$id?"(controller: $controller+"Rest") { 
+		"/api/$ctrlPrefix/$id?" {
+			controller = { "${params.ctrlPrefix}Rest" }
 			action = [GET: "show", PUT: "update", DELETE: "delete", POST: "save"]
 		}
 
