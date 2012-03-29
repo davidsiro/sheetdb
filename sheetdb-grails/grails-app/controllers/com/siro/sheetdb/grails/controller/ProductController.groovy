@@ -27,7 +27,7 @@ class ProductController {
     }
 
 	//TODO: to be deleted, should use separate service methods for new, edit operations
-    def save = {
+    def save() {
         def productInstance = new Product(params)
         if (productInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'product.label', default: 'Product'), productInstance.id])}"
@@ -38,7 +38,7 @@ class ProductController {
         }
     }
 	
-	def createProduct = {
+	def createProduct() {
 		def productInstance = new Product(params)
 		if (productService.createProduct(productInstance)) {
 			flash.message = "${message(code: 'default.created.message', args: [message(code: 'product.label', default: 'Product'), productInstance.id])}"

@@ -6,7 +6,7 @@ function saveDrawingCallback(data)
 	var count = parseInt(drawingCountField.val());
 	
 	var drawingsIdsHolder = $('#drawingsToBeAssigned');
-	$('<input type="hidden" name="drawings[' + count + ']" value="' + data.id + '"/>').appendTo(drawingsIdsHolder);
+	$('<input type="hidden" name="drawings[' + count + '].id" value="' + data.id + '"/>').appendTo(drawingsIdsHolder);
 	
 	drawingCountField.val(++count);
 	
