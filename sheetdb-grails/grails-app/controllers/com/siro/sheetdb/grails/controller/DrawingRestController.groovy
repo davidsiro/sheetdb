@@ -19,6 +19,22 @@ class DrawingRestController {
 
 	def save() {
 		def drawingInstance = new Drawing(params)
+		
+		def uploadedFile = request.getFile('drawingFile')
+		if(!uploadedFile.empty){
+			println "Class: ${uploadedFile.class}"
+			println "Name: ${uploadedFile.name}"
+			println "OriginalFileName: ${uploadedFile.originalFilename}"
+			println "Size: ${uploadedFile.size}"
+			println "ContentType: ${uploadedFile.contentType}"
+	  
+			def webRootDir = servletContext.getRealPath("/")
+			def userDir = new File(webRootDir, "/payload")
+			userDir.mkdirs()
+			uploadedFile.transferTo( new File( userDir, uploadedFile.originalFilename))
+		  }
+		
+		
 		if (drawingInstance.save(flush: true))
 			render drawingInstance as JSON
 		//		render(template: "/drawing/preview", model: [drawing: drawingInstance])

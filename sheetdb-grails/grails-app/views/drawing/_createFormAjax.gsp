@@ -1,4 +1,4 @@
-<g:form >
+<g:uploadForm >
 	<div class="dialog">
 		<table>
 			<tbody>
@@ -36,7 +36,7 @@
 								code="drawing.fileName.label" default="File Name" /></label></td>
 					<td valign="top"
 						class="value ${hasErrors(bean: drawingInstance, field: 'fileName', 'errors')}">
-						<g:textField name="fileName" value="${drawingInstance?.fileName}" />
+						<input type="file" id="drawingFile" name="drawingFile"/>
 					</td>
 				</tr>
 				<tr>
@@ -54,4 +54,4 @@
 				 url="[mapping: 'restApi', params : [ctrlPrefix :'drawing']]"  update="[success: 'message', failure: 'error']"
 				value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
 	</div>
-</g:form>
+</g:uploadForm>
