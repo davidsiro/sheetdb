@@ -16,7 +16,7 @@ environments {
             dbCreate = "update" // one of 'create', 'create-drop','update'
             url = "jdbc:mysql://localhost:3306/sheetdb"
 			username = "root"
-			password = "root"
+//			password = "root"
         }
     }
     test {

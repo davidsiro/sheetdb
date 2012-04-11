@@ -61,6 +61,7 @@ environments {
     }
     development {
         grails.serverURL = "http://localhost:8080/${appName}"
+		sheetdb.filestore = "/Users/solid/workspaces/sheetdb/data"
     }
     test {
         grails.serverURL = "http://localhost:8080/${appName}"

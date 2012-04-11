@@ -39,6 +39,12 @@
 						<g:textField name="fileName" value="${drawingInstance?.fileName}" />
 					</td>
 				</tr>
+				<tr>
+				<td></td>
+				<td>
+					<uploader:uploader id="fileUploader" url="[mapping: 'restApi', params : [ctrlPrefix :'drawingResource']]" />
+				</td>
+				</tr>
 
 			</tbody>
 		</table>

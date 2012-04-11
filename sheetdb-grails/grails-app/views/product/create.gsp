@@ -1,5 +1,3 @@
-
-
 <%@ page import="com.siro.sheetdb.grails.domain.Product"%>
 <%@ page import="com.siro.sheetdb.grails.domain.Drawing"%>
 <html>
@@ -10,19 +8,22 @@
 	value="${message(code: 'product.label', default: 'Product')}" />
 <title><g:message code="default.create.label"
 		args="[entityName]" /></title>
+<uploader:head />
 </head>
 <body>
 	<script type="text/javascript">
 		$(function() {
-				$("#addDrawingDialog").dialog({ autoOpen: false });
-	
-		    	$("#openAddDrawingDialog").click(function(){
-		    			$("#addDrawingDialog").dialog('open');
-		    			return false;
-			    	});
-	
+			$("#addDrawingDialog").dialog({
+				autoOpen : false
+			});
+
+			$("#openAddDrawingDialog").click(function() {
+				$("#addDrawingDialog").dialog('open');
+				return false;
+			});
+
 		});
-   	</script>
+	</script>
 	<div id="addDrawingDialog" title="Add drawing">
 		<g:render template="/drawing/createFormAjax"
 			model="[drawingInstance: new Drawing()]"></g:render>
@@ -103,10 +104,9 @@
 					</tbody>
 				</table>
 			</div>
-			
-			<g:hiddenField name="drawingsCount" value="0"/>
-			<div id="drawingsToBeAssigned">
-			</div>
+
+			<g:hiddenField name="drawingsCount" value="0" />
+			<div id="drawingsToBeAssigned"></div>
 
 			<div class="buttons">
 				<span class="button"><g:submitButton name="create"
