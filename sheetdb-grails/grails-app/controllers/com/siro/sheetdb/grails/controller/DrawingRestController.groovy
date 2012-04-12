@@ -1,10 +1,14 @@
 package com.siro.sheetdb.grails.controller
 
 import com.siro.sheetdb.grails.domain.Drawing
+import com.siro.sheetdb.grails.service.DrawingService;
+
 import grails.converters.JSON
 
 class DrawingRestController {
 
+	DrawingService drawingService
+	
 	static allowedMethods = [save: "POST", show: "GET"]
 
 	def show() {
@@ -20,23 +24,7 @@ class DrawingRestController {
 	def save() {
 		def drawingInstance = new Drawing(params)
 		
-		def uploadedFile = request.getFile('drawingFile')
-		if(!uploadedFile.empty){
-			println "Class: ${uploadedFile.class}"
-			println "Name: ${uploadedFile.name}"
-			println "OriginalFileName: ${uploadedFile.originalFilename}"
-			println "Size: ${uploadedFile.size}"
-			println "ContentType: ${uploadedFile.contentType}"
-	  
-			def webRootDir = servletContext.getRealPath("/")
-			def userDir = new File(webRootDir, "/payload")
-			userDir.mkdirs()
-			uploadedFile.transferTo( new File( userDir, uploadedFile.originalFilename))
-		  }
-		
-		
-		if (drawingInstance.save(flush: true))
-			render drawingInstance as JSON
-		//		render(template: "/drawing/preview", model: [drawing: drawingInstance])
+		drawingInstance = drawingService.createNewDrawing(drawingInstance, params.drawingFile)
+		render drawingInstance as JSON
 	}
 }

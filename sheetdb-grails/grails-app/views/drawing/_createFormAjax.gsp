@@ -1,4 +1,4 @@
-<g:uploadForm >
+<g:uploadForm>
 	<div class="dialog">
 		<table>
 			<tbody>
@@ -36,22 +36,31 @@
 								code="drawing.fileName.label" default="File Name" /></label></td>
 					<td valign="top"
 						class="value ${hasErrors(bean: drawingInstance, field: 'fileName', 'errors')}">
-						<input type="file" id="drawingFile" name="drawingFile"/>
+						<input type="hidden" id="drawingFile" name="drawingFile" />
 					</td>
 				</tr>
 				<tr>
-				<td></td>
-				<td>
-					<uploader:uploader id="fileUploader" url="[mapping: 'restApi', params : [ctrlPrefix :'drawingResource']]" />
-				</td>
+					<td></td>
+					<td><uploader:uploader id="uploader"
+							url="[mapping: 'restApi', params : [ctrlPrefix :'drawingResource']]"
+							multiple="false">
+							<uploader:onSubmit></uploader:onSubmit>
+							<uploader:onComplete>
+							$('input[name="drawingFile"]').val(fileName);
+						</uploader:onComplete>
+							<uploader:onCancel></uploader:onCancel>
+							<uploader:onProgress></uploader:onProgress>
+						</uploader:uploader></td>
 				</tr>
 
 			</tbody>
 		</table>
 	</div>
 	<div class="buttons">
-		<span class="button"> <g:submitToRemote method="POST" onSuccess="saveDrawingCallback(data)" 
-				 url="[mapping: 'restApi', params : [ctrlPrefix :'drawing']]"  update="[success: 'message', failure: 'error']"
+		<span class="button"> <g:submitToRemote method="POST"
+				onSuccess="saveDrawingCallback(data)"
+				url="[mapping: 'restApi', params : [ctrlPrefix :'drawing']]"
+				update="[success: 'message', failure: 'error']"
 				value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
 	</div>
 </g:uploadForm>
